@@ -1,0 +1,2 @@
+# AjedrezHexagonal
+Juego en java
