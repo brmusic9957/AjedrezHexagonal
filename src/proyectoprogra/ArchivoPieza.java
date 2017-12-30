@@ -52,82 +52,83 @@ public class ArchivoPieza {
                     // Piezas Negras
                     if (arch[i].equalsIgnoreCase("P")) {
                         x = 257 + (posX * 45);
-                        y = 25 + (posY * 25);
-                        piezas[posY][posX] = new Peon(x, y, posX, posY, Pieza.NEGRAS);
+                        y = 25 + (posY * 25);                       
+                        piezas[posY][posX] = new Peon(x, y, posX, posY, Pieza.NEGRAS);                        
                         inter.add(new Peon(x, y, posX, posY, Pieza.NEGRAS));
-                        System.out.println("X:" + posX + " Y:" + posY + " " + arch[i]);
-
+                        //System.out.println("X:" + posX + " Y:" + posY + " " + arch[i]);
+                        
                     }
 
                     if (arch[i].equalsIgnoreCase("A")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
-
+                        
                         inter.add(new Alfil(x, y, posX, posY, Pieza.NEGRAS));
 
+                        
                     }
                     if (arch[i].equalsIgnoreCase("K")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Rey(x, y, posX, posY, Pieza.NEGRAS));
-
+                        
                     }
                     if (arch[i].equalsIgnoreCase("Q")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Reina(x, y, posX, posY, Pieza.NEGRAS));
-
+                        
                     }
                     if (arch[i].equalsIgnoreCase("T")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Torre(x, y, posX, posY, Pieza.NEGRAS));
-
+                        
                     }
                     if (arch[i].equalsIgnoreCase("C")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Caballo(x, y, posX, posY, Pieza.NEGRAS));
-
+                        
                     }
 
                     //Piezas Blancas
                     if (arch[i].equalsIgnoreCase("P1")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
-
+                        piezas[posY][posX] = new Peon(x, y, posX, posY, Pieza.BLANCAS);  
                         inter.add(new Peon(x, y, posX, posY, Pieza.BLANCAS));
-
+                        
                     }
                     if (arch[i].equalsIgnoreCase("A1")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Alfil(x, y, posX, posY, Pieza.BLANCAS));
-
+                        
                     }
                     if (arch[i].equalsIgnoreCase("K1")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Rey(x, y, posX, posY, Pieza.BLANCAS));
-
+                        
                     }
                     if (arch[i].equalsIgnoreCase("Q1")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Reina(x, y, posX, posY, Pieza.BLANCAS));
-
+                        
                     }
                     if (arch[i].equalsIgnoreCase("T1")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Torre(x, y, posX, posY, Pieza.BLANCAS));
-
+                        
                     }
                     if (arch[i].equalsIgnoreCase("C1")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Caballo(x, y, posX, posY, Pieza.BLANCAS));
-
+                        
                     }
 
                     posX++;
@@ -138,18 +139,7 @@ public class ArchivoPieza {
 
                 l = l + aux + "\n";
             }
-            for (int h = 0; ArchivoPieza.piezas.length > h; h++) {
-
-                for (int k = 0; ArchivoPieza.piezas[h].length > k; k++) {
-                    if (ArchivoPieza.piezas[h][k] == null) {
-                        System.out.print(",");
-                    } else {
-                        System.out.print("P");
-                    }
-                }
-                System.out.println("");
-            }
-            System.out.println("------------------------------------------------");
+            
             br.close();
             filer.close();
             return piezas;

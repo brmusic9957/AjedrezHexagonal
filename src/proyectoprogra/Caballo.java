@@ -23,7 +23,7 @@ public class Caballo extends Pieza {
     }
 
     @Override
-    boolean validarMovimiento(int newx, int newy) {
+    boolean validarMovimiento(int newx, int newy, int oldX, int oldY) {
         // TODO Auto-generated method stub
         return false;
     }

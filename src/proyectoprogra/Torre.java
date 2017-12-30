@@ -24,7 +24,7 @@ public class Torre extends Pieza {
     }
 
     @Override
-    boolean validarMovimiento(int newx, int newy) {
+    boolean validarMovimiento(int newx, int newy, int oldX, int oldY) {
 
         if (bando == BLANCAS) {
             if (x == newx || y == newy) {

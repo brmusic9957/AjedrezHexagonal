@@ -28,6 +28,14 @@ abstract class Pieza extends Componente {
         System.out.println("Estoy seleccionando la pieza: " + x + ", " + y);
     }
 
+    public int imprimirX() {
+        return x;
+    }
+
+    public int imprimirY() {
+        return y;
+    }
+
     public int getBando() {
         return bando;
     }
@@ -36,8 +44,8 @@ abstract class Pieza extends Componente {
         this.bando = bando;
     }
 
-    abstract boolean validarMovimiento(int newx, int newy);
-    
+    abstract boolean validarMovimiento(int newx, int newy, int oldX, int oldY);
+
     abstract void comio(int newX, int newyY);
 
 }

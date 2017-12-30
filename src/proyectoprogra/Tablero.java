@@ -37,7 +37,7 @@ public class Tablero extends JLayeredPane {
         private JPanel piezas;
 
         private Pieza clickPieza;
-        private Celda clickCelda;
+        private int posAntX, posAntY;
         private int agarraAnchura;
         private int agarraAltura;
         private Point posicionAnterior;
@@ -59,7 +59,8 @@ public class Tablero extends JLayeredPane {
                 piezas.revalidate();
                 piezas.repaint();
                 clickPieza.imprimirPosicion();
-                //clickCelda.imprimirPosicion();
+                posAntX = clickPieza.imprimirX();
+                posAntY = clickPieza.imprimirY();                               
                 agarraAnchura = clickPieza.getWidth() / 2;
                 agarraAltura = clickPieza.getHeight() / 2;
                 int x = me.getPoint().x - agarraAnchura;
@@ -92,8 +93,8 @@ public class Tablero extends JLayeredPane {
                         Celda celda = (Celda) componente;
                         if (turno == clickPieza.getBando()) {
 
-                            if (clickPieza.validarMovimiento(celda.posX(), celda.posY())) {
-                            //arraceldas
+                            if (clickPieza.validarMovimiento(celda.posX(), celda.posY(), posAntX, posAntY)) {
+                                //arraceldas
                                 //celda.setPieza(null);
                                 clickPieza.nuevaPosicion(celda.getLocation());
                                 //System.out.println("npos>"+celda.posX()+">"+celda.posY());
@@ -119,6 +120,18 @@ public class Tablero extends JLayeredPane {
                 piezas.revalidate();
                 clickPieza = null;
                 repaint();
+                for (int h = 0; ArchivoPieza.piezas.length > h; h++) {
+
+                    for (int k = 0; ArchivoPieza.piezas[h].length > k; k++) {
+                        if (ArchivoPieza.piezas[h][k] == null) {
+                            System.out.print(",");
+                        } else {
+                            System.out.print("P");
+                        }
+                    }
+                    System.out.println("");
+                }
+                System.out.println("------------------------------------------------");
             }
 
         }
