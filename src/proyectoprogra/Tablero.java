@@ -60,7 +60,7 @@ public class Tablero extends JLayeredPane {
                 piezas.repaint();
                 clickPieza.imprimirPosicion();
                 posAntX = clickPieza.imprimirX();
-                posAntY = clickPieza.imprimirY();                               
+                posAntY = clickPieza.imprimirY();
                 agarraAnchura = clickPieza.getWidth() / 2;
                 agarraAltura = clickPieza.getHeight() / 2;
                 int x = me.getPoint().x - agarraAnchura;
@@ -93,7 +93,7 @@ public class Tablero extends JLayeredPane {
                         Celda celda = (Celda) componente;
                         if (turno == clickPieza.getBando()) {
 
-                            if (clickPieza.validarMovimiento(celda.posX(), celda.posY(), posAntX, posAntY)) {
+                            if (clickPieza.validarMovimiento(celda.posX(), celda.posY())) {
                                 //arraceldas
                                 //celda.setPieza(null);
                                 clickPieza.nuevaPosicion(celda.getLocation());
@@ -121,7 +121,6 @@ public class Tablero extends JLayeredPane {
                 clickPieza = null;
                 repaint();
                 for (int h = 0; ArchivoPieza.piezas.length > h; h++) {
-
                     for (int k = 0; ArchivoPieza.piezas[h].length > k; k++) {
                         if (ArchivoPieza.piezas[h][k] == null) {
                             System.out.print(",");

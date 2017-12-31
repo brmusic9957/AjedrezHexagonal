@@ -25,7 +25,7 @@ public class Rey extends Pieza {
     }
 
 	@Override
-	boolean validarMovimiento(int newx, int newy, int oldX, int oldY) {
+	boolean validarMovimiento(int newx, int newy) {
 
 		return false;
 	}

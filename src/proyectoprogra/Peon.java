@@ -28,20 +28,18 @@ public class Peon extends Pieza {
     }
 
     @Override
-    boolean validarMovimiento(int newx, int newy, int oldX, int oldY) {
+    boolean validarMovimiento(int newx, int newy) {
 
         if (bando == BLANCAS) {
-            if (x == newx && y != newy && y > newy) {
+            if (x == newx && y != newy && y > newy) { // Si mueve para arriba y solo en posicion Y
                 if (movimiento == 0) {
                     if (y - newy < 5 || y - newy < 3) {
                         if (ArchivoPieza.piezas[newy][newx] == null) {
-                            ArchivoPieza.piezas[oldY][oldX] = null;
-                            x = 257 + (posX * 45);
-                            y = 25 + (posY * 25);
-                            ArchivoPieza.piezas[newy][newx] = new Peon(x, y, newx, newy, Pieza.BLANCAS);
+                            ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
+                            ArchivoPieza.piezas[y][x] = null;
                             super.y = newy;
                             movimiento++;
-                            System.out.println(newx + " " + newy + " " + oldX + " " + oldY);
+                            System.out.println(movimiento);
                             return true;
                         }
                         return false;
@@ -49,9 +47,12 @@ public class Peon extends Pieza {
                 }
                 if (movimiento > 0) {
                     if (y - newy < 3) {
-                        super.y = newy;
-
-                        return true;
+                        if (ArchivoPieza.piezas[newy][newx] == null) {
+                            ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
+                            ArchivoPieza.piezas[y][x] = null;
+                            movimiento++;
+                            return true;
+                        }
                     }
                 }
             }
@@ -59,12 +60,29 @@ public class Peon extends Pieza {
         }
 
         if (bando == NEGRAS) {
-
-            if (x == newx) {
-                return true;
-
+            if (x == newx && y != newy && y < newy) { // Si mueve para abajo y solo en posicion X
+                if (movimiento == 0) {
+                    if (newy - y < 5 || newy - y < 3) {
+                        if (ArchivoPieza.piezas[newy][newx] == null) {
+                            ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
+                            ArchivoPieza.piezas[y][x] = null;
+                            movimiento++;
+                            return true;
+                        }
+                                                
+                    }
+                    return false;
+                }
+                if (movimiento > 0) {
+                    if (newy - y < 3) {
+                        if (ArchivoPieza.piezas[newy][newx] == null) {
+                            ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
+                            ArchivoPieza.piezas[y][x] = null;
+                            return true;
+                        }
+                    }
+                }
             }
-
         }
 
         return false;

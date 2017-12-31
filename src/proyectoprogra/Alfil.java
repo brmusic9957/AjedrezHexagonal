@@ -24,7 +24,7 @@ public class Alfil extends Pieza {
     }
 
     @Override
-    boolean validarMovimiento(int newx, int newy, int oldX, int oldY) {
+    boolean validarMovimiento(int newx, int newy) {
         if (bando == BLANCAS) {
             if (y == newy) {
                 return true;
