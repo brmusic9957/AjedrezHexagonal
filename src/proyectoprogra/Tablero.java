@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 
 public class Tablero extends JLayeredPane {
 
+    ArchivoPieza archpieza;
+
     public Tablero(int tamx, int tamy) {
         super();
         this.setSize(tamx, tamy);
@@ -24,7 +26,7 @@ public class Tablero extends JLayeredPane {
         this.add(piezas, JLayeredPane.PALETTE_LAYER);
         Archivo arch = new Archivo(casillas);
         arch.leer();
-        ArchivoPieza archpieza = new ArchivoPieza(piezas);
+        archpieza = new ArchivoPieza(piezas);
         archpieza.leer();
         EventosMouse em = new EventosMouse(casillas, piezas);
         this.addMouseListener(em);
@@ -118,9 +120,9 @@ public class Tablero extends JLayeredPane {
                 piezas.revalidate();
                 clickPieza = null;
                 repaint();
-                for (int h = 0; ArchivoPieza.piezas.length > h; h++) {
-                    for (int k = 0; ArchivoPieza.piezas[h].length > k; k++) {
-                        if (ArchivoPieza.piezas[h][k] == null) {
+                for (int h = 0; archpieza.piezas.length > h; h++) {
+                    for (int k = 0; archpieza.piezas[h].length > k; k++) {
+                        if (archpieza.piezas[h][k] == null) {
                             System.out.print(",");
                         } else {
                             System.out.print("P");

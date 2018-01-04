@@ -22,7 +22,7 @@ public class ArchivoPieza {
     private static int y;
     private Pieza pieza;
     private static JPanel inter;    
-    static Pieza[][] piezas = new Pieza[21][11];    
+    public Pieza[][] piezas = new Pieza[21][11];
             
     public ArchivoPieza(JPanel interfaz) {
         inter = interfaz;
@@ -54,7 +54,7 @@ public class ArchivoPieza {
                     if (arch[i].equalsIgnoreCase("P")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
-                        piezas[posY][posX] = new Peon(x, y, posX, posY, Pieza.NEGRAS);                        
+                        piezas[posY][posX] = new Peon(x, y, posX, posY, Pieza.NEGRAS, this);
                         inter.add(piezas[posY][posX]);
                         
                         //System.out.println("X:" + posX + " Y:" + posY + " " + arch[i]);
@@ -97,7 +97,7 @@ public class ArchivoPieza {
                     if (arch[i].equalsIgnoreCase("P1")) {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
-                        piezas[posY][posX] = new Peon(x, y, posX, posY, Pieza.BLANCAS);                        
+                        piezas[posY][posX] = new Peon(x, y, posX, posY, Pieza.BLANCAS, this);
                         inter.add(piezas[posY][posX]);
 
                     }
@@ -150,7 +150,7 @@ public class ArchivoPieza {
         return null;
     }
     
-    public static void eliminarPieza(int x, int y){
+    public void eliminarPieza(int x, int y){
         inter.remove(piezas[y][x]);
         System.out.println("Borro esa mierda :D");
         inter.revalidate();

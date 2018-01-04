@@ -16,15 +16,16 @@ public class Peon extends Pieza {
     int posX = 0;
     int posY = 0;
 
-    private Pieza[][] piezaTemp = new Pieza[11][21];
+    private ArchivoPieza tablero;
 
-    public Peon(int posx, int posy, int x, int y, int bando) {
+    public Peon(int posx, int posy, int x, int y, int bando, ArchivoPieza tablero) {
         super(bando, posx, posy, x, y);
         if (bando == BLANCAS) {
             this.setIcon(new ImageIcon("src/Images/peon2.png"));
         } else {
             this.setIcon(new ImageIcon("src/Images/peon.png"));
         }
+        this.tablero = tablero;
     }
 
     @Override
@@ -34,9 +35,9 @@ public class Peon extends Pieza {
             if (x == newx && y != newy && y > newy) { // Si mueve para arriba y solo en posicion Y
                 if (movimiento == 0) {
                     if (y - newy < 5 || y - newy < 3) {
-                        if (ArchivoPieza.piezas[newy][newx] == null) {
-                            ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
-                            ArchivoPieza.piezas[y][x] = null;
+                        if (tablero.piezas[newy][newx] == null) {
+                            tablero.piezas[newy][newx] = tablero.piezas[y][x];
+                            tablero.piezas[y][x] = null;
                             movimiento++;
                             y = newy;
                             return true;
@@ -46,20 +47,20 @@ public class Peon extends Pieza {
                 }
                 if (movimiento > 0) {
                     if (y - newy < 3) {
-                        if (ArchivoPieza.piezas[newy][newx] == null) {
-                            ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
-                            ArchivoPieza.piezas[y][x] = null;
+                        if (tablero.piezas[newy][newx] == null) {
+                            tablero.piezas[newy][newx] = tablero.piezas[y][x];
+                            tablero.piezas[y][x] = null;
                             movimiento++;
                             y = newy;
                             return true;
                         }
                     }
                 }
-            } else if (ArchivoPieza.piezas[newy][newx] != null) {
+            } else if (tablero.piezas[newy][newx] != null) {
                 if (x - newx == 1 && y - newy == 1 || newx - x == 1 && y - newy == 1) {
-                    ArchivoPieza.eliminarPieza(newx, newy);
-                    ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
-                    ArchivoPieza.piezas[y][x] = null;
+                    tablero.eliminarPieza(newx, newy);
+                    tablero.piezas[newy][newx] = tablero.piezas[y][x];
+                    tablero.piezas[y][x] = null;
                     x = newx;
                     y = newy;
                     return true;
@@ -72,9 +73,9 @@ public class Peon extends Pieza {
             if (x == newx && y != newy && y < newy) { // Si mueve para abajo y solo en posicion X
                 if (movimiento == 0) {
                     if (newy - y < 5 || newy - y < 3) {
-                        if (ArchivoPieza.piezas[newy][newx] == null) {
-                            ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
-                            ArchivoPieza.piezas[y][x] = null;
+                        if (tablero.piezas[newy][newx] == null) {
+                            tablero.piezas[newy][newx] = tablero.piezas[y][x];
+                            tablero.piezas[y][x] = null;
                             movimiento++;
                             return true;
                         }
@@ -84,9 +85,9 @@ public class Peon extends Pieza {
                 }
                 if (movimiento > 0) {
                     if (newy - y < 3) {
-                        if (ArchivoPieza.piezas[newy][newx] == null) {
-                            ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
-                            ArchivoPieza.piezas[y][x] = null;
+                        if (tablero.piezas[newy][newx] == null) {
+                            tablero.piezas[newy][newx] = tablero.piezas[y][x];
+                            tablero.piezas[y][x] = null;
                             return true;
                         }
                     }
@@ -99,7 +100,7 @@ public class Peon extends Pieza {
 
     @Override
     void comio(int newX, int newyY) {
-        System.out.println(ArchivoPieza.piezas[newX][newyY].getBando());
+        System.out.println(tablero.piezas[newX][newyY].getBando());
 
     }
 
