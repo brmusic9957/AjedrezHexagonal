@@ -5,7 +5,6 @@
  */
 package proyectoprogra;
 
-import java.awt.List;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,16 +17,15 @@ import javax.swing.JPanel;
  */
 public class ArchivoPieza {
 
-    private static int x;
-    private static int y;
-    private Pieza pieza;
-    private static JPanel inter;    
+    private int x;
+    private int y;    
+    private JPanel inter;    
     public Pieza[][] piezas = new Pieza[21][11];
             
     public ArchivoPieza(JPanel interfaz) {
         inter = interfaz;
     }
-    Celda celdita;
+   
 
     public Pieza[][] leer() {
 
@@ -90,7 +88,6 @@ public class ArchivoPieza {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Caballo(x, y, posX, posY, Pieza.NEGRAS));
-
                     }
 
                     //Piezas Blancas
@@ -129,20 +126,14 @@ public class ArchivoPieza {
                         x = 257 + (posX * 45);
                         y = 25 + (posY * 25);
                         inter.add(new Caballo(x, y, posX, posY, Pieza.BLANCAS));
-
                     }
-
                     posX++;
-
                 }
-
                 posY++;                         
                 l = l + aux + "\n";
             }
-
             br.close();
-            filer.close();
-            
+            filer.close();            
             return piezas;
         } catch (Exception e) {
             System.out.println(e);
