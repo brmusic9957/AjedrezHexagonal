@@ -37,9 +37,8 @@ public class Peon extends Pieza {
                         if (ArchivoPieza.piezas[newy][newx] == null) {
                             ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
                             ArchivoPieza.piezas[y][x] = null;
-                            super.y = newy;
                             movimiento++;
-                            System.out.println(movimiento);
+                            y = newy;
                             return true;
                         }
                         return false;
@@ -51,9 +50,19 @@ public class Peon extends Pieza {
                             ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
                             ArchivoPieza.piezas[y][x] = null;
                             movimiento++;
+                            y = newy;
                             return true;
                         }
                     }
+                }
+            } else if (ArchivoPieza.piezas[newy][newx] != null) {
+                if (x - newx == 1 && y - newy == 1 || newx - x == 1 && y - newy == 1) {
+                    ArchivoPieza.eliminarPieza(newx, newy);
+                    ArchivoPieza.piezas[newy][newx] = ArchivoPieza.piezas[y][x];
+                    ArchivoPieza.piezas[y][x] = null;
+                    x = newx;
+                    y = newy;
+                    return true;
                 }
             }
 
@@ -69,7 +78,7 @@ public class Peon extends Pieza {
                             movimiento++;
                             return true;
                         }
-                                                
+
                     }
                     return false;
                 }

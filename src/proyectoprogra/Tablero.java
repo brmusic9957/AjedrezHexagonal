@@ -93,9 +93,7 @@ public class Tablero extends JLayeredPane {
                         Celda celda = (Celda) componente;
                         if (turno == clickPieza.getBando()) {
 
-                            if (clickPieza.validarMovimiento(celda.posX(), celda.posY())) {
-                                //arraceldas
-                                //celda.setPieza(null);
+                            if (clickPieza.validarMovimiento(celda.posX(), celda.posY())) {                                                                
                                 clickPieza.nuevaPosicion(celda.getLocation());
                                 //System.out.println("npos>"+celda.posX()+">"+celda.posY());
                                 //System.out.println("npos>"+celda.getLocation());
